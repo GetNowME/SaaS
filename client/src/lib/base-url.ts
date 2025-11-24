@@ -3,4 +3,4 @@ const envBase = import.meta.env.VITE_API_BASE_URL;
 // Prevents `undefined` appearing in constructed URLs (e.g. "undefined/auth/google").
 // export const baseURL = envBase ?? "http://localhost:8000/api";
 
-export const baseURL = envBase ?? "https://saas-sn73.onrender.com/";
+export const baseURL = envBase ?? "https://saas-sn73.onrender.com/api";
