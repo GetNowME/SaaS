@@ -1,6 +1,8 @@
-import { baseURL } from "@/lib/base-url";
+// import { baseURL } from "@/lib/base-url";
 import { Button } from "../ui/button";
 
+const baseURL =
+  import.meta.env.VITE_API_BASE_URL ?? "https://saas-sn73.onrender.com/api";
 const GoogleOauthButton = (props: { label: string }) => {
   const { label } = props;
 
