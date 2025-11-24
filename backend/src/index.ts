@@ -48,6 +48,10 @@ app.use(
   })
 );
 
+app.get("/",(req,res)=>{
+    res.send("API is running....")
+})
+
 app.get(
   `/`,
   asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
