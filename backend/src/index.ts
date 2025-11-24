@@ -21,6 +21,11 @@ import projectRoutes from "./routes/project.route";
 import taskRoutes from "./routes/task.route";
 
 const app = express();
+// When running behind a proxy (e.g. Render, Vercel reverse proxy),
+// Express needs to trust the proxy so secure cookies and redirects work correctly.
+if (config.NODE_ENV === "production") {
+  app.set("trust proxy", 1);
+}
 const BASE_PATH = config.BASE_PATH;
 
 app.use(express.json());
@@ -34,7 +39,9 @@ app.use(
     maxAge: 24 * 60 * 60 * 1000,
     secure: config.NODE_ENV === "production",
     httpOnly: true,
-    sameSite: "lax",
+    // For cross-site requests (frontend on different domain), cookies must
+    // be set with `SameSite=None` and `Secure=true`. Locally we keep `lax`.
+    sameSite: config.NODE_ENV === "production" ? "none" : "lax",
   })
 );
 
