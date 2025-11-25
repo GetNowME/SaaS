@@ -41,7 +41,7 @@ app.use(
     httpOnly: true,
     // For cross-site requests (frontend on different domain), cookies must
     // be set with `SameSite=None` and `Secure=true`. Locally we keep `lax`.
-    sameSite: config.NODE_ENV === "production" ? "none" : "lax",
+    sameSite: config.NODE_ENV === "production" ? ("none" as const) : "lax",
   })
 );
 
